@@ -8,7 +8,6 @@ import java.util.Arrays;
 import java.util.LinkedList;
 
 import static org.junit.jupiter.api.Assertions.assertThrows;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class StringConverterTest {
 
@@ -39,7 +38,6 @@ class StringConverterTest {
     void testWithSentences() {
         ArrayList<String> expected = new ArrayList<>(Arrays.asList("study", "at", "Internet", "of", "Things"));
         String sentenceWithWords = "I study at Internet of Things. I have almost finished my first year ";
-
         LinkedList<String> result = StringConverter.getUniqueWordsFromFirstSentence(sentenceWithWords);
 
         Assertions.assertEquals(5, result.size());
@@ -58,7 +56,7 @@ class StringConverterTest {
         Assertions.assertEquals(4, result.size());
 
         for (String word : expected) {
-            assertTrue(result.contains(word));
+            Assertions.assertTrue(result.contains(word));
         }
 
     }
