@@ -6,29 +6,28 @@ import java.util.List;
 
 public class StringConverter {
 
-    public static LinkedList<String> getUniqueWordsFromFirstSentence(String sentences) {
+    public static LinkedList<String> getUniqueWordsFromFirstSentence(final String sentences) {
 
         if (sentences == null || sentences.isEmpty()) {
             throw new IllegalArgumentException("null or empty input parameter");
         }
 
-        sentences = sentences.replace(",", "");
+        String sentencesToSplit = sentences.replace(",", "");
 
-        String[] splitSentences = sentences.split("\\. ", 2);
+        String[] splitSentences = sentencesToSplit.split("\\. ", 2);
 
-        String[] arrayOfFirsSentence = splitSentences[0].split(" ");
+        String[] arrayOfFirstSentence = splitSentences[0].split(" ");
         String[] arrayOfOtherWords = splitSentences[1].replace(".", "").split(" ");
 
-        List<String> listOfOtherWords = Arrays.stream(arrayOfOtherWords).toList();
+        List<String> listOfOtherWords = Arrays.asList(arrayOfOtherWords);
 
         LinkedList<String> resultListOfWords = new LinkedList<>();
 
-        for (String word : arrayOfFirsSentence) {
+        for (String word : arrayOfFirstSentence) {
             if (!listOfOtherWords.contains(word)) {
                 resultListOfWords.add(word);
             }
         }
-
 
         return resultListOfWords;
     }

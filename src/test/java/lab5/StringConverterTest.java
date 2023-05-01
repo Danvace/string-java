@@ -21,7 +21,7 @@ class StringConverterTest {
 
     @Test
     void testCommaDelete() {
-        String sentencesWithCommas = "testWord,,,,,, . ";
+        String sentencesWithCommas = "testWord,,,,,,hgvhvfdgfd . ";
         LinkedList<String> result = StringConverter.getUniqueWordsFromFirstSentence(sentencesWithCommas);
         Assertions.assertEquals(1, result.size());
         Assertions.assertFalse(result.contains(","));
@@ -37,7 +37,7 @@ class StringConverterTest {
     @Test
     void testWithSentences() {
         ArrayList<String> expected = new ArrayList<>(Arrays.asList("study", "at", "Internet", "of", "Things"));
-        String sentenceWithWords = "I study at Internet of Things. I have almost finished my first year ";
+        String sentenceWithWords = "I study at Internet of Things. I have, almost, finished, my first year ";
         LinkedList<String> result = StringConverter.getUniqueWordsFromFirstSentence(sentenceWithWords);
 
         Assertions.assertEquals(5, result.size());
@@ -51,7 +51,7 @@ class StringConverterTest {
     @Test
     void testWithDotSentences() {
         ArrayList<String> expected = new ArrayList<>(Arrays.asList("study", "at", "Internet", "of"));
-        String sentenceWithWords = "I study at Internet of Things. I almost finish my first year ....Things....";
+        String sentenceWithWords = "I study at Internet of Things. I, almost finish my first year ....Things....";
         LinkedList<String> result = StringConverter.getUniqueWordsFromFirstSentence(sentenceWithWords);
         Assertions.assertEquals(4, result.size());
 
